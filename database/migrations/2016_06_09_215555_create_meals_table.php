@@ -16,6 +16,7 @@ class CreateMealsTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')->unsigned()->index();
             $table->decimal('price', 10, 4);
+            $table->date('date');
             $table->timestamps();
 
             $table->foreign('customer_id')
