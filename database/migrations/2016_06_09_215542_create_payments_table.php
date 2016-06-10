@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('customer_id')->unsigned()->index();
             $table->decimal('value', 10, 4);
             $table->decimal('balance', 10, 4);
+            $table->integer('last_meal_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('customer_id')
