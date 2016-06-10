@@ -47,7 +47,10 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+                    <li><a href="{{ url('/transactions') }}">Lançamentos</a></li>
+                    <li><a href="{{ url('/searchs') }}">Consultas</a></li>
+                    <li><a href="{{ url('/reports') }}">Relatórios</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
