@@ -21,7 +21,7 @@ class Customer extends Model
      */
      public function company()
      {
-         $this->belongsTo('App\Company');
+         return $this->belongsTo('App\Company');
      }
 
      /**
@@ -29,7 +29,7 @@ class Customer extends Model
       */
       public function meals()
       {
-          $this->hasMany('App\Meal');
+          return $this->hasMany('App\Meal');
       }
 
       /**
@@ -37,6 +37,6 @@ class Customer extends Model
        */
        public function payments()
        {
-           $this->hasMany('App\Payment');
+           return $this->hasMany('App\Payment');
        }
 }

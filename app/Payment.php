@@ -21,6 +21,6 @@ class Payment extends Model
      */
      public function customer()
      {
-         $this->belongsTo('App\Customer');
+         return $this->belongsTo('App\Customer');
      }
 }
