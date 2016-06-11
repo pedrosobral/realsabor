@@ -52,6 +52,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
                     <li><a href="{{ url('/customers') }}">Clientes</a></li>
+                    <li><a href="{{ url('/companies') }}">Empresas</a></li>
                     <li><a href="{{ url('/transactions') }}">Lançamentos</a></li>
                     <li><a href="{{ url('/searchs') }}">Consultas</a></li>
                     <li><a href="{{ url('/reports') }}">Relatórios</a></li>
