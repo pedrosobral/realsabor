@@ -16,7 +16,7 @@
           </div>
           <div class="form-group">
             {!! Form::label('company', 'Empresa:') !!}
-            {!! Form::text('company', null, ['class' => 'form-control'])!!}
+            {!! Form::select('company_id', $companies, null,['id' => 'companies_list', 'class' => 'form-control'])!!}
           </div>
           <div class="form-group">
             {!! Form::label('address1', 'Endereço:') !!}
@@ -57,5 +57,13 @@
       </div>
     </div>
   </div>
+@endsection
 
+@section('footer')
+    <script>
+        $('#companies_list').select2({
+            placeholder: "Selecione uma empresa",
+            allowClear: true
+        });
+    </script>
 @endsection
