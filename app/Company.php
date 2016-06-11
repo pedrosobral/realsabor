@@ -14,7 +14,7 @@ class Company extends Model
     protected $fillable = [
         'name', 'cnpj', 'address1', 'address2',
         'neighborhood', 'city', 'state',
-        'zip_code', 'phone1', 'phone2'
+        'zip_code', 'phone1', 'phone2',
     ];
 
      /**
