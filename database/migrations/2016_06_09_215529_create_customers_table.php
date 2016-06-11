@@ -17,17 +17,18 @@ class CreateCustomersTable extends Migration
             $table->integer('company_id')->unsigned()->index()->nullable();
             $table->char('cpf', 11)->unique();
             $table->string('name');
-            $table->timestamps();
             // address
-            $table->string('address1');
-            $table->string('address2');
-            $table->string('neighborhood');
-            $table->string('city');
-            $table->string('state');
-            $table->string('zip_code');
+            $table->string('address1')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('neighborhood')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip_code')->nullable();
             // phones
-            $table->string('phone1');
-            $table->string('phone2');
+            $table->string('phone1')->nullable();
+            $table->string('phone2')->nullable();
+
+            $table->timestamps();
 
             $table->foreign('company_id')
                   ->references('id')->on('companies')
