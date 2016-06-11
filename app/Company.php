@@ -12,7 +12,9 @@ class Company extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'name', 'cnpj', 'address1', 'address2',
+        'neighborhood', 'city', 'state',
+        'zip_code', 'phone1', 'phone2'
     ];
 
      /**
