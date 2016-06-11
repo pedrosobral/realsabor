@@ -67,8 +67,7 @@
     <script>
         $('#companies_list').select2({
             placeholder: "Selecione uma empresa",
-            allowClear: true,
-            tags: true
+            allowClear: true
         });
     </script>
 @endsection
