@@ -37,7 +37,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -49,7 +49,9 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Company::create($request->all());
+
+        return redirect('/companies');
     }
 
     /**
