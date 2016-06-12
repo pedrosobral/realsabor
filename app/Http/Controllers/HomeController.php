@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Customer;
 use App\Company;
+use App\Customer;
 
 class HomeController extends Controller
 {
