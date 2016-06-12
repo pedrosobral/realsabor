@@ -10,6 +10,7 @@
             @foreach($customers as $customer)
               <h4>{{ $customer->name }}</h4>
             @endforeach
+            {!! Form::submit('Novo Cliente', ['class' => 'btn btn-primary']) !!}
           </div>
       </div>
     </div>
