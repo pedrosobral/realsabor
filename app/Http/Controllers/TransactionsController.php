@@ -21,6 +21,6 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        return view('transactions');
+        return view('transactions.index');
     }
 }
