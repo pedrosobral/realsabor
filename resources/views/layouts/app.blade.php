@@ -44,7 +44,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-                    <li><a href="{{ url('/customers') }}">Clientes</a></li>
+                    <li><a href="{{ url('/customer') }}">Clientes</a></li>
                     <li><a href="{{ url('/companies') }}">Empresas</a></li>
                     <li>
                       <a class="dropdown-toggle" data-toggle="dropdown" href="{{ url('/transactions') }}">Lançamentos<span class="caret"></span></a>
