@@ -1,6 +1,6 @@
 <div class="page-header">
     <h1>{{$customer->name}}
-        <a href="{!! route('customers.create') !!}" class="btn btn-primary pull-right" role="button">
+        <a href="{!! route('customer.create') !!}" class="btn btn-primary pull-right" role="button">
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Novo Lançamento
         </a>
     </h1>

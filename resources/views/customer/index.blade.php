@@ -7,7 +7,7 @@
             <div class="col-md-5">
                 <div class="page-header">
                     <h1>Clientes
-                        <a href="{!! route('customers.create') !!}" class="btn btn-primary pull-right" role="button">
+                        <a href="{!! route('customer.create') !!}" class="btn btn-primary pull-right" role="button">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Novo Cliente
                         </a>
                     </h1>
@@ -44,12 +44,12 @@
     $('.customer').click(function(){
         var id = $(this).attr('value');
         $.ajax({
-            url: 'customers/' + id,
+            url: 'customer/' + id,
             success: function(data){
                 $('.details').html(data);
             },
             error: function(){
-                console.error('customers.index.blade.php');
+                console.error('customer.index.blade.php');
             },
         });
     });

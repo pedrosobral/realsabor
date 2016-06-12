@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Novo Cliente</div>
                     <div class="panel-body">
-                        {!! Form::open(['route' => 'customers.store']) !!}
+                        {!! Form::open(['route' => 'customer.store']) !!}
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group">
