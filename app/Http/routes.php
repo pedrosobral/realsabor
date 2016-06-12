@@ -25,4 +25,4 @@ Route::get('/reports', 'ReportsController@index');
 Route::resource('companies', 'CompaniesController',
     ['only' => ['index', 'store', 'show', 'edit', 'update', 'destroy']]);
 
-Route::resource('customers', 'CustomersController');
+Route::resource('customer', 'CustomersController');
