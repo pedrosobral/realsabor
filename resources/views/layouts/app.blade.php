@@ -37,7 +37,7 @@
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Real Sabor
-                    </a>
+                </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
