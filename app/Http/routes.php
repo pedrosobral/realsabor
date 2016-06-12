@@ -22,5 +22,7 @@ Route::get('/transactions', 'TransactionsController@index');
 Route::get('/searchs', 'SearchsController@index');
 Route::get('/reports', 'ReportsController@index');
 
-Route::resource('companies', 'CompaniesController');
+Route::resource('companies', 'CompaniesController',
+    ['only' => ['index', 'store', 'show', 'edit', 'update', 'destroy']]);
+
 Route::resource('customers', 'CustomersController');
