@@ -27,7 +27,7 @@ class CustomersController extends Controller
     {
         $customers = Customer::all();
 
-        return view('customers.index', compact('customers'));
+        return view('customer.index', compact('customers'));
     }
 
     /**
@@ -39,7 +39,7 @@ class CustomersController extends Controller
     {
         $companies = Company::lists('name', 'id');
 
-        return view('customers.create', compact('companies'));
+        return view('customer.create', compact('companies'));
     }
 
     /**
@@ -64,7 +64,7 @@ class CustomersController extends Controller
         $customer = Customer::create($request->all());
         $company->customers()->save($customer);
 
-        return redirect('customers');
+        return redirect('customer');
     }
 
     /**
@@ -74,11 +74,9 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer)
     {
-        $customer = Customer::findOrFail($id);
-
-        return view('customers.show', compact('customer'));
+        return view('customer.show', compact('customer'));
     }
 
     /**
@@ -88,7 +86,7 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer)
     {
         //
     }
@@ -101,7 +99,7 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customer $customer)
     {
         //
     }
