@@ -51,9 +51,17 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        $customer = Customer::create($request->all());
+        $company_id = $request->input('company_id');
+        // create a new company if it not exists
+        if (!is_numeric($company_id)) {
+            Company::create(['name' => $company_id]);
+            // get the lastest company that we just created
+            $company = Company::findOrFail(Company::all()->last()->id);
+        } else {
+            $company = Company::findOrFail($company_id);
+        }
 
-        $company = Company::findOrFail($request->input('company_id'));
+        $customer = Customer::create($request->all());
         $company->customers()->save($customer);
 
         return redirect('customers');

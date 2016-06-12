@@ -99,7 +99,8 @@
     <script>
     $('#companies_list').select2({
         placeholder: "Selecione uma empresa",
-        allowClear: true
+        allowClear: true,
+        tags: true
     });
     </script>
 @endsection
