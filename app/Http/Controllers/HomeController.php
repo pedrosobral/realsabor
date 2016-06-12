@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Company;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         $customers = Customer::all();
+        $companies = Company::all();
 
-        return view('home', compact('customers'));
+        return view('home', compact('customers', 'companies'));
     }
 }
