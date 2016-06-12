@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <h3>Clientes: <span class="label label-primary">{{$customers->count()}}</span></h3>
                 </div>
             </div>
         </div>
