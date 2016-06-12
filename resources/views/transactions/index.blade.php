@@ -9,13 +9,13 @@
                     <div class="panel-body">
                       <div class="col-md-12">
                         <div class="col-md-6">
-                          <a class="btn btn-primary pull-rigth" role="button">
+                          <a class="btn btn-primary btn-block" role="button">
                               <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                               Consumo
                           </a>
                         </div>
                         <div class="col-md-6">
-                          <a class="btn btn-primary pull-left" role="button">
+                          <a class="btn btn-primary btn-block" role="button">
                               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                               Pagamento
                           </a>
