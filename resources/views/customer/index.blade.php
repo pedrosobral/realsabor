@@ -6,11 +6,11 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="page-header">
-                    <h1>Clientes
+                    <h3>Clientes
                         <a href="{!! route('customer.create') !!}" class="btn btn-primary pull-right" role="button">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Novo Cliente
                         </a>
-                    </h1>
+                    </h3>
                 </div>
                 <table id="customers" class="table table-striped"  cellspacing="0" width="100%">
                     <thead>
