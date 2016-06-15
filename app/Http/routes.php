@@ -26,3 +26,4 @@ Route::resource('companies', 'CompaniesController',
     ['only' => ['index', 'store', 'show', 'edit', 'update', 'destroy']]);
 
 Route::resource('customer', 'CustomersController');
+Route::post('customer/payment', 'CustomersController@payment')->name('customer.payment');
