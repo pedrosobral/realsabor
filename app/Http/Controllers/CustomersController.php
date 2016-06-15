@@ -119,7 +119,7 @@ class CustomersController extends Controller
 
     public function payment(Request $request)
     {
-        $meal = new Meal;
+        $meal = new Meal();
         $meal->price = $request->price;
         $meal->date = $request->date;
 
