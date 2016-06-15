@@ -52,8 +52,4 @@
     </div>
 </div>
 
-
-
-
-
-@include('transactions.index');
+@include('transactions.index')
