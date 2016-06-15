@@ -1,9 +1,13 @@
 <div class="page-header">
-    <h3>{{$customer->name}}
-        <a data-toggle="modal" data-target="#pagamento" class="btn btn-primary pull-right" role="button">
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Novo Lançamento
-        </a>
-    </h3>
+    <div class="btn-toolbar">
+        <span class="headline">{{$customer->name}}</span>
+        <button id="buceta" data-toggle="modal" data-target="#pagamento" class="btn btn-success pull-right " role="button">
+            <span class="glyphicon glyphicon-cutlery"></span> Consumo
+        </button>
+        <button data-toggle="modal" data-target="#pagamento" class="btn btn-warning pull-right" role="button">
+            <span class="glyphicon glyphicon-usd"></span> Pagamento
+        </button>
+    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-body">
