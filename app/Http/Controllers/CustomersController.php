@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Customer;
+use App\Meal;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -114,5 +115,17 @@ class CustomersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function payment(Request $request)
+    {
+        $meal = new Meal;
+        $meal->price = $request->price;
+        $meal->date = $request->date;
+
+        $customer = Customer::findOrFail($request->id);
+        $customer->meals()->save($meal);
+
+        return $request->id;
     }
 }
