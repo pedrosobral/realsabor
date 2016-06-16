@@ -59,15 +59,13 @@
 </div>
 
 <script type="text/javascript">
-$(function() {
-    var then = $('.data');
-    console.log(then);
-    for (i = 0; i < then.length; i++) {
-        var date = moment(new Date(then[i].dataset.date));
-        then[i].innerHTML = date.calendar();
-    }
-});
-
+    $(function() {
+        var dates = $('.data');
+        dates.each(function(date) {
+            this.innerHTML = moment(new Date(this.dataset.date)).calendar();
+        });
+    });
 </script>
+
 @include('transactions.payment')
 @include('transactions.meal')
