@@ -1,5 +1,14 @@
 var elixir = require('laravel-elixir');
 
+// paths
+var p = {
+    'jquery': './www/lib/jquery/dist/jquery.js',
+    'bootstrap': './www/lib/bootstrap/',
+    'select2': './node_modules/select2/dist/',
+    'datatables': './www/lib/dataTables.net/',
+    'datatables_bs': './www/lib/datatables.net-bs/',
+};
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -12,5 +21,28 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.less('app.less')
+        .copy(p.bootstrap + '/fonts/**', 'public/fonts')
+        .copy('./fonts/Lato/*', 'public/fonts');
+
+    mix.styles([
+        p.select2 + 'css/select2.css',
+        p.datatables_bs + 'css/dataTables.bootstrap.css',
+        'app.css'
+    ]);
+
+    mix.scripts([
+        p.jquery,
+        p.bootstrap + 'dist/js/bootstrap.js',
+        './www/lib/moment/min/moment-with-locales.js',
+        p.datatables + 'js/jquery.dataTables.js',
+        p.datatables_bs + 'js/dataTables.bootstrap.js',
+        p.select2 + 'js/select2.full.js',
+    ], 'public/js/vendor.js');
+
+    mix.scripts([
+        'datatables.js',
+        'app.js',
+    ]);
+
 });
