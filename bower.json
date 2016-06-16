@@ -1,0 +1,28 @@
+{
+  "name": "restaurant",
+  "description": "Sistema de Controle de Pagamentos",
+  "main": "",
+  "authors": [
+    "Pedro Henrique <pedrosobralxv@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "laravel"
+  ],
+  "homepage": "https://github.com/pedrosobral/realsabor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "bootstrap": "^3.3.6",
+    "moment": "^2.13.0",
+    "datatables.net": "^1.10.12",
+    "datatables.net-bs": "^1.10.12"
+  }
+}
