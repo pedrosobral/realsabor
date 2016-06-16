@@ -63,7 +63,6 @@ $(function() {
     var then = $('.data');
     console.log(then);
     for (i = 0; i < then.length; i++) {
-        console.log(then[i].dataset.date);
         var date = moment(new Date(then[i].dataset.date));
         then[i].innerHTML = date.calendar();
     }

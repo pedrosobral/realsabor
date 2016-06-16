@@ -58,15 +58,11 @@
     $('#payment_form').submit(function(e) {
         $('#payment_modal').modal('toggle');
         $('#payment_modal').modal('hide');
-        console.log('NOVO PAGAMENTO');
 
         e.preventDefault();
         var id    = $('#_id').val();
         var date  = $('#date').val();
         var value = $('#value').val();
-        console.log(id);
-        console.log(date);
-        console.log(value);
 
         $.ajax({
             type: 'POST',

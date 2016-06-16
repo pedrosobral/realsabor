@@ -58,15 +58,11 @@
     $('#meal_form').submit(function(e) {
         $('#meal_modal').modal('toggle');
         $('#meal_modal').modal('hide');
-        console.log('NOVO CONSUMO');
 
         e.preventDefault();
         var id     = $('#_id').val();
         var date  = $('#date').val();
         var price = $('#price').val();
-        console.log(id);
-        console.log(date);
-        console.log(price);
 
         $.ajax({
             type: 'POST',
