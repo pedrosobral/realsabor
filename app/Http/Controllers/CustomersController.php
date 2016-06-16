@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Customer;
 use App\Meal;
+use App\Payment;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -77,7 +78,26 @@ class CustomersController extends Controller
      */
     public function show(Customer $customer)
     {
-        return view('customer.show', compact('customer'));
+        $lastBalance = 0;
+
+        // get last meal id paid
+        $lastMealIdPaid = $customer->payments->last();
+
+        // if it's first time paying
+        if (!$lastMealIdPaid) {
+            $lastMealIdPaid = 0;
+        } else {
+            $lastMealIdPaid = $customer->payments->last()->last_meal_id;
+            $lastBalance = $customer->payments->last()->balance;
+        }
+
+        // sum all meals price
+        $balance = floatval($customer->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
+
+        // plus the lastest balance
+        $balance += $lastBalance;
+        $balance = number_format($balance, 2, ',', '.');
+        return view('customer.show', compact('customer', 'balance'));
     }
 
     /**
@@ -118,6 +138,44 @@ class CustomersController extends Controller
     }
 
     public function payment(Request $request)
+    {
+        $lastBalance = 0;
+        // get customer
+        $customer = Customer::findOrFail($request->id);
+
+        // get last meal id paid
+        $lastMealIdPaid = $customer->payments->last();
+
+        // if it's first time paying
+        if (!$lastMealIdPaid) {
+            $lastMealIdPaid = 0;
+        } else {
+            $lastMealIdPaid = $customer->payments->last()->last_meal_id;
+            $lastBalance = $customer->payments->last()->balance;
+        }
+
+        // sum all meals price
+        $sumDebit = floatval($customer->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
+
+        // plus the lastest balance
+        $sumDebit += $lastBalance;
+
+        // calculate balance
+        $balance = $sumDebit - $request->value;
+
+        // get last meal
+        $last_meal_id = $customer->meals->last()->id;
+
+        // create payment
+        $payment = new Payment();
+        $payment->value         = $request->value;
+        $payment->balance       = $balance;
+        $payment->last_meal_id  = $last_meal_id;
+        // save it
+        $customer->payments()->save($payment);
+    }
+
+    public function meal(Request $request)
     {
         $meal = new Meal();
         $meal->price = $request->price;
