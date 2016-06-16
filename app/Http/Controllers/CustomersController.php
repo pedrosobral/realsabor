@@ -80,22 +80,8 @@ class CustomersController extends Controller
     {
         $lastBalance = 0;
 
-        // get last meal id paid
-        $lastMealIdPaid = $customer->payments->last();
+        $balance = $this->getBalance($customer);
 
-        // if it's first time paying
-        if (!$lastMealIdPaid) {
-            $lastMealIdPaid = 0;
-        } else {
-            $lastMealIdPaid = $customer->payments->last()->last_meal_id;
-            $lastBalance = $customer->payments->last()->balance;
-        }
-
-        // sum all meals price
-        $balance = floatval($customer->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
-
-        // plus the lastest balance
-        $balance += $lastBalance;
         $balance = number_format($balance, 2, ',', '.');
 
         return view('customer.show', compact('customer', 'balance'));
@@ -140,28 +126,12 @@ class CustomersController extends Controller
 
     public function payment(Request $request)
     {
-        $lastBalance = 0;
         // get customer
         $customer = Customer::findOrFail($request->id);
 
-        // get last meal id paid
-        $lastMealIdPaid = $customer->payments->last();
+        $sumDebit = $this->getBalance($customer);
 
-        // if it's first time paying
-        if (!$lastMealIdPaid) {
-            $lastMealIdPaid = 0;
-        } else {
-            $lastMealIdPaid = $customer->payments->last()->last_meal_id;
-            $lastBalance = $customer->payments->last()->balance;
-        }
-
-        // sum all meals price
-        $sumDebit = floatval($customer->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
-
-        // plus the lastest balance
-        $sumDebit += $lastBalance;
-
-        // calculate balance
+        // calculate new balance
         $balance = $sumDebit - $request->value;
 
         // get last meal
@@ -186,5 +156,26 @@ class CustomersController extends Controller
         $customer->meals()->save($meal);
 
         return $request->id;
+    }
+
+    private function getBalance(Customer $customer)
+    {
+        // get last meal id paid
+        $lastMealIdPaid = $customer->payments->last();
+
+        // if it's first time paying
+        if (!$lastMealIdPaid) {
+            $lastMealIdPaid = 0;
+            $lastBalance = 0;
+        } else {
+            $lastMealIdPaid = $customer->payments->last()->last_meal_id;
+            $lastBalance = $customer->payments->last()->balance;
+        }
+
+        // sum all meals price
+        $balance = floatval($customer->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
+
+        // plus the lastest balance
+        return $balance += $lastBalance;
     }
 }
