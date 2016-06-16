@@ -27,3 +27,4 @@ Route::resource('companies', 'CompaniesController',
 
 Route::resource('customer', 'CustomersController');
 Route::post('customer/payment', 'CustomersController@payment')->name('customer.payment');
+Route::post('customer/meal', 'CustomersController@meal')->name('customer.meal');
