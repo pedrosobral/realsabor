@@ -81,7 +81,6 @@
     });
 
     function refresh(id) {
-        console.log('refresh');
         $.ajax({
             url: 'customer/' + id,
             success: function(data){

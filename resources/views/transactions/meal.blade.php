@@ -72,24 +72,11 @@
                 _token: '{{ Session::token() }}'
             },
             success: function(data){
-                refresh(id);
+                refresh(id); // from transactions.show.blade.php
             },
             error: function(){
                 console.error('transactions.index.blade.php');
             }
         });
     });
-
-    function refresh(id) {
-        console.log('refresh');
-        $.ajax({
-            url: 'customer/' + id,
-            success: function(data){
-                $('.details').html(data);
-            },
-            error: function(){
-                console.error('customer.index.blade.php');
-            },
-        });
-    }
 </script>
