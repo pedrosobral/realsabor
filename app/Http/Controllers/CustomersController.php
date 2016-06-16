@@ -97,6 +97,7 @@ class CustomersController extends Controller
         // plus the lastest balance
         $balance += $lastBalance;
         $balance = number_format($balance, 2, ',', '.');
+
         return view('customer.show', compact('customer', 'balance'));
     }
 
@@ -168,9 +169,9 @@ class CustomersController extends Controller
 
         // create payment
         $payment = new Payment();
-        $payment->value         = $request->value;
-        $payment->balance       = $balance;
-        $payment->last_meal_id  = $last_meal_id;
+        $payment->value = $request->value;
+        $payment->balance = $balance;
+        $payment->last_meal_id = $last_meal_id;
         // save it
         $customer->payments()->save($payment);
     }
