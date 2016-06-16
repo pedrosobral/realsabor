@@ -70,5 +70,5 @@ $(function() {
 });
 
 </script>
-@include('transactions.index')
+@include('transactions.payment')
 @include('transactions.meal')
