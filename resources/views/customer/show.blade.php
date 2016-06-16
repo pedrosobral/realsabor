@@ -1,15 +1,12 @@
 <div class="page-header">
     <div class="btn-toolbar">
         <span class="headline">{{$customer->name}}</span>
-        <button data-toggle="modal" data-target="#pagamento" class="btn btn-success pull-right " role="button">
-            <span class="glyphicon glyphicon-cutlery"></span> Consumo
-        </button>
-        <button data-toggle="modal" data-target="#pagamento" class="btn btn-warning pull-right" role="button">
-            <span class="glyphicon glyphicon-usd"></span> Pagamento
-        </button>
+        <button data-toggle="modal" data-target="#payment_modal" class="btn btn-success pull-right " role="button">
+            <span class="glyphicon glyphicon-cutlery"></span> Pagamento</button>
+        <button data-toggle="modal" data-target="#meal_modal" class="btn btn-warning pull-right" role="button">
+            <span class="glyphicon glyphicon-usd"></span> Consumo</button>
     </div>
 </div>
-
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-success">
