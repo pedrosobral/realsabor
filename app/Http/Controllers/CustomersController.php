@@ -53,6 +53,13 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
+        // validation
+        $this->validate($request, [
+            'name'          => 'required',
+            'company_id'    => 'required',
+            'cpf'           => 'required|numeric|unique:customers|max:11',
+        ]);
+
         $company_id = $request->input('company_id');
         // create a new company if it not exists
         if (!is_numeric($company_id)) {
@@ -66,7 +73,7 @@ class CustomersController extends Controller
         $customer = Customer::create($request->all());
         $company->customers()->save($customer);
 
-        return redirect('customer');
+        return redirect('customer')->with('status', 'Cliente cadastrado com sucesso!');
     }
 
     /**
