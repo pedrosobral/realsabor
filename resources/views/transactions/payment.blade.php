@@ -72,7 +72,7 @@
                 _token: '{{ Session::token() }}'
             },
             success: function(data){
-                refresh(id);
+                refresh(id, 'Consumo cadastrado!');
             },
             error: function(){
                 console.error('transactions.index.blade.php');
@@ -80,13 +80,15 @@
         });
     });
 
-    function refresh(id) {
+    function refresh(id, msg) {
         $.ajax({
             url: 'customer/' + id,
-            success: function(data){
+            success: function(data) {
                 $('.details').html(data);
+                toastr.success(msg);
             },
-            error: function(){
+            error: function() {
+                toastr.erro('Ops... ocorreu algum erro!');
                 console.error('customer.index.blade.php');
             },
         });

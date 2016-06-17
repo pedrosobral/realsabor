@@ -72,7 +72,7 @@
                 _token: '{{ Session::token() }}'
             },
             success: function(data){
-                refresh(id); // from transactions.show.blade.php
+                refresh(id, 'Pagamento salvo!'); // from transactions.show.blade.php
             },
             error: function(){
                 console.error('transactions.index.blade.php');
