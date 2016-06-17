@@ -13,3 +13,33 @@ body {
 .input {
     text-transform: uppercase;
 }
+
+.saldo > .panel {
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 28px;
+}
+
+.saldo.panel-success > .panel-heading {
+    color: #ffffff;
+    background-color: #66c796;
+    border-color: #53c077;
+    border: 1px solid transparent;
+}
+.stats-number {
+    font-size: 42px;
+    margin-top: -10px;
+}
+
+.panel-body {
+    color: #ffffff;
+    background-color: #66c796;
+}
