@@ -72,7 +72,11 @@
                 _token: '{{ Session::token() }}'
             },
             success: function(data){
-                refresh(id, 'Consumo cadastrado!');
+                if (window.location.pathname === "/customer") {
+                    refresh(id, 'Consumo cadastrado!');
+                } else {
+                    location.reload();
+                }
             },
             error: function(){
                 console.error('transactions.index.blade.php');
@@ -82,7 +86,7 @@
 
     function refresh(id, msg) {
         $.ajax({
-            url: 'customer/' + id,
+            url: 'customer/details/' + id,
             success: function(data) {
                 $('#details').html(data);
                 toastr.success(msg);

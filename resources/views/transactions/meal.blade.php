@@ -71,8 +71,12 @@
                 id: id, date: date, value: value,
                 _token: '{{ Session::token() }}'
             },
-            success: function(data){
-                refresh(id, 'Pagamento salvo!'); // from transactions.show.blade.php
+            success: function(data) {
+                if (window.location.pathname === "/customer") {
+                    refresh(id, 'Pagamento salvo!'); // from transactions.show.blade.php
+                } else {
+                    location.reload();
+                }
             },
             error: function(){
                 console.error('transactions.index.blade.php');
