@@ -28,7 +28,7 @@
 <div class="row">
     <div class="col-md-5">
         <div class="panel panel-success">
-            <div class="panel-heading">Últimas refeições</div>
+            <div class="panel-heading"><a href="{{route('customer.meals.index', $customer->id)}}">Últimas refeições</a></div>
             <table class="table table-striped table-hover table-condensed">
                 <thead>
                     <tr>
