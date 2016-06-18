@@ -7,6 +7,7 @@
         <button data-toggle="modal" data-target="#meal_modal" class="btn btn-warning pull-right">
             <span class="glyphicon glyphicon-usd"></span> Consumo
         </button>
+        <a role="button" href="{{route('customer.show', $customer->id)}}" class="btn btn-info pull-right"> Ver Detalhes</a>
     </div>
 </div>
 
