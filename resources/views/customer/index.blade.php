@@ -32,8 +32,7 @@
                 </table>
 
             </div>
-            <div class="col-md-7 details">
-
+            <div id="details" class="col-md-7">
             </div>
         </div>
     </div>
@@ -51,7 +50,7 @@
         $.ajax({
             url: 'customer/' + id,
             success: function(data){
-                $('.details').html(data);
+                $('#details').html(data);
             },
             error: function(){
                 console.error('customer.index.blade.php');

@@ -14,7 +14,7 @@ body {
     text-transform: uppercase;
 }
 
-.saldo > .panel {
+.panel-saldo {
     margin-bottom: 20px;
     background-color: #ffffff;
     border: 1px solid transparent;
@@ -22,24 +22,25 @@ body {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.panel-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 28px;
-}
-
-.saldo.panel-success > .panel-heading {
+.panel-saldo > .panel-heading {
     color: #ffffff;
     background-color: #66c796;
     border-color: #53c077;
     border: 1px solid transparent;
 }
+
+.panel-saldo > .panel-body {
+    color: #ffffff;
+    background-color: #66c796;
+}
+
+.panel-saldo .panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 28px;
+}
+
 .stats-number {
     font-size: 38px;
     margin-top: -10px;
-}
-
-.panel-body {
-    color: #ffffff;
-    background-color: #66c796;
 }

@@ -1,10 +1,10 @@
 <div class="page-header">
     <div class="btn-toolbar">
         <span class="headline">{{$customer->name}}</span>
-        <button data-toggle="modal" data-target="#payment_modal" class="btn btn-success pull-right " role="button">
+        <button data-toggle="modal" data-target="#payment_modal" class="btn btn-success pull-right">
             <span class="glyphicon glyphicon-cutlery"></span> Pagamento
         </button>
-        <button data-toggle="modal" data-target="#meal_modal" class="btn btn-warning pull-right" role="button">
+        <button data-toggle="modal" data-target="#meal_modal" class="btn btn-warning pull-right">
             <span class="glyphicon glyphicon-usd"></span> Consumo
         </button>
     </div>
@@ -12,8 +12,8 @@
 
 <div class="row">
     <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
-        <div class="panel panel-success saldo">
-            <div class="saldo panel-heading">
+        <div class="panel panel-success panel-saldo">
+            <div class="panel-heading">
                 <h4 class="panel-title">Saldo</h4>
             </div>
             <div class="panel-body">
@@ -29,11 +29,13 @@
     <div class="col-md-5">
         <div class="panel panel-success">
             <div class="panel-heading">Últimas refeições</div>
-            <table class="table table-striped table-condensed" cellspacing="0">
+            <table class="table table-striped table-hover table-condensed">
                 <thead>
-                    <th> # </th>
-                    <th> Data </th>
-                    <th> Valor (R$) </th>
+                    <tr>
+                        <th>#</th>
+                        <th>Data</th>
+                        <th>Valor (R$)</th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($customer->meals()->orderBy('created_at', 'desc')->limit(10)->get() as $meal)
@@ -50,13 +52,15 @@
     <div class="col-md-7">
         <div class="panel panel-warning">
             <div class="panel-heading">Últimos Pagamentos</div>
-            <table class="table table-striped table-condensed" cellspacing="0" width="100%">
+            <table class="table table-striped table-hover table-condensed" >
                 <thead>
-                    <th>#</th>
-                    <th> Data </th>
-                    <th> Valor (R$) </th>
-                    <th> Saldo (R$) </th>
-                    <th> #Consumo </th>
+                    <tr>
+                        <th>#</th>
+                        <th>Data</th>
+                        <th>Valor (R$)</th>
+                        <th>Saldo (R$)</th>
+                        <th>#REF</th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($customer->payments()->orderBy('created_at', 'desc')->limit(10)->get() as $payment)

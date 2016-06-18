@@ -84,7 +84,7 @@
         $.ajax({
             url: 'customer/' + id,
             success: function(data) {
-                $('.details').html(data);
+                $('#details').html(data);
                 toastr.success(msg);
             },
             error: function() {
