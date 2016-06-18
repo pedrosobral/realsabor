@@ -1,6 +1,6 @@
 <div class="page-header">
     <div class="btn-toolbar">
-        <span class="headline">{{$customer->name}}</span>
+        <span class="headline"> {{$customer->name}}</span> <small class="label label-primary">{{$customer->company->name}}</small>
         <button data-toggle="modal" data-target="#payment_modal" class="btn btn-success pull-right">
             <span class="glyphicon glyphicon-cutlery"></span> Pagamento
         </button>
