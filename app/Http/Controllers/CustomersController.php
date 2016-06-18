@@ -57,7 +57,7 @@ class CustomersController extends Controller
         $this->validate($request, [
             'name'          => 'required',
             'company_id'    => 'required',
-            'cpf'           => 'required|numeric|unique:customers|max:11',
+            'cpf'           => 'required|unique:customers|max:11',
         ]);
 
         $company_id = $request->input('company_id');
