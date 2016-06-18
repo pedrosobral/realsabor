@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
+use App\Payment;
+
 use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
@@ -11,9 +14,9 @@ class PaymentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Customer $customer)
     {
-        //
+        return view('payments.index', compact('customer'));
     }
 
     /**
