@@ -85,8 +85,6 @@ class CustomersController extends Controller
      */
     public function show(Customer $customer)
     {
-        $lastBalance = 0;
-
         $balance = $this->getBalance($customer);
 
         $balance = number_format($balance, 2, ',', '.');
