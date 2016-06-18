@@ -21,11 +21,11 @@
             <tbody>
                 @foreach($customer->payments()->orderBy('created_at', 'desc')->get() as $payment)
                     <tr>
-                        <td> {{ $payment->id }} </td>
-                        <td><span class="data" data-date="{{$payment->created_at}}"></span></td>
-                        <td> {{ number_format(floatval($payment->value), 2, ',', '.') }} </td>
-                        <td> {{ number_format(floatval($payment->balance), 2, ',', '.') }} </td>
-                        <td> {{ $payment->last_meal_id }} </td>
+                        <td>{{ $payment->id }} </td>
+                        <td>{{ date_format(date_create($payment->created_at), "d/m/Y H:i:s") }}</td>
+                        <td>{{ number_format(floatval($payment->value), 2, ',', '.') }} </td>
+                        <td>{{ number_format(floatval($payment->balance), 2, ',', '.') }} </td>
+                        <td>{{ $payment->last_meal_id }} </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -33,14 +33,3 @@
     </div>
 </div>
 @endsection
-
-@section('footer')
-<script type="text/javascript">
-$(function() {
-    var dates = $('.data');
-    dates.each(function(date) {
-        this.innerHTML = moment(new Date(this.dataset.date)).calendar();
-    });
-});
-</script>
-@stop

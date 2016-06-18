@@ -20,7 +20,7 @@
                 @foreach($customer->meals()->orderBy('created_at', 'desc')->get() as $meal)
                     <tr>
                         <td> {{ $meal->id }} </td>
-                        <td><span class="data" data-date="{{$meal->created_at}}">{{ $meal->date  }}</span></td>
+                        <td>{{ date_format(date_create($meal->created_at), "d/m/Y H:i:s") }}</td>
                         <td> {{ number_format(floatval($meal->price), 2, ',', '.')  }} </td>
                     </tr>
                 @endforeach
@@ -28,15 +28,4 @@
         </table>
     </div>
 </div>
-@stop
-
-@section('footer')
-<script type="text/javascript">
-    $(function() {
-        var dates = $('.data');
-        dates.each(function(date) {
-            this.innerHTML = moment(new Date(this.dataset.date)).calendar();
-        });
-    });
-</script>
 @stop
