@@ -14,8 +14,11 @@
                 </div>
                 <table id="customers" class="table table-striped"  cellspacing="0" width="100%">
                     <thead>
-                        <th> Nome </th>
-                        <th> CPF </th>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Empresa</th>
+                            <th>CPF</th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach($customers as $customer)
@@ -25,6 +28,7 @@
                                         {{ $customer->name }}
                                     </a>
                                 </td>
+                                <td> {{ $customer->company->name }} </td>
                                 <td> {{ $customer->cpf }} </td>
                             </tr>
                         @endforeach
