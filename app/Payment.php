@@ -35,16 +35,4 @@ class Payment extends Model
     {
         return number_format($value, 2, ',', '.');
     }
-
-    /**
-     * Get the value formatted.
-     *
-     * @param float $value
-     *
-     * @return string
-     * */
-    public function getBalanceAttribute($value)
-    {
-        return number_format($value, 2, ',', '.');
-    }
 }
