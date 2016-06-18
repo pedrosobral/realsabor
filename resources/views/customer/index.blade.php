@@ -52,7 +52,7 @@
     $('.customer').click(function(){
         var id = $(this).attr('value');
         $.ajax({
-            url: 'customer/' + id,
+            url: 'customer/details/' + id,
             success: function(data){
                 $('#details').html(data);
             },

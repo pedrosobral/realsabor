@@ -129,6 +129,23 @@ class CustomersController extends Controller
         //
     }
 
+    /**
+     * Display the specified resource details.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function details(Customer $customer)
+    {
+        $balance = $this->getBalance($customer);
+
+        $balance = number_format($balance, 2, ',', '.');
+
+        return view('customer.details', compact('customer', 'balance'));
+    }
+
+
     public function payment(Request $request)
     {
         // get customer

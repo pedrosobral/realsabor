@@ -26,6 +26,8 @@ Route::resource('companies', 'CompaniesController',
     ['only' => ['index', 'store', 'show', 'edit', 'update', 'destroy']]);
 
 Route::resource('customer', 'CustomersController');
+Route::get('customer/details/{customer}', 'CustomersController@details')->name('customer.details');
+
 Route::resource('customer.payments', 'PaymentsController');
 Route::resource('customer.meals', 'MealsController');
 
