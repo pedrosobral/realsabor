@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($customer->payments()->orderBy('created_at', 'desc')->limit(10)->get() as $payment)
+                @foreach($customer->payments()->orderBy('created_at', 'desc')->get() as $payment)
                     <tr>
                         <td> {{ $payment->id }} </td>
                         <td><span class="data" data-date="{{$payment->created_at}}"></span></td>
