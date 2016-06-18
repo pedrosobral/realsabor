@@ -8,7 +8,7 @@
                 <div class="page-header">
                     <h1>Empresas</h1>
                 </div>
-                <table id="customers" class="table table-striped"  cellspacing="0" width="100%">
+                <table class="datatables table table-striped">
                     <thead>
                         <th> Nome </th>
                         <th> Funcionários </th>

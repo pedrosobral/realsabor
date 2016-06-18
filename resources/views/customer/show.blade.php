@@ -51,7 +51,7 @@
     </div>
     <div class="col-md-7">
         <div class="panel panel-warning">
-            <div class="panel-heading">Últimos Pagamentos</div>
+            <div class="panel-heading"><a href="{{route('customer.payments.index', $customer->id)}}">Últimos Pagamentos</a></div>
             <table class="table table-striped table-hover table-condensed" >
                 <thead>
                     <tr>

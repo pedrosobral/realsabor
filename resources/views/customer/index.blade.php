@@ -12,7 +12,7 @@
                         </a>
                     </h3>
                 </div>
-                <table id="customers" class="table table-striped"  cellspacing="0" width="100%">
+                <table class="datatables table table-striped">
                     <thead>
                         <tr>
                             <th>Nome</th>
