@@ -42,7 +42,7 @@
                         <tr>
                             <td> {{ $meal->id }} </td>
                             <td><span class="data" data-date="{{$meal->created_at}}">{{ $meal->date  }}</span></td>
-                            <td> {{ $meal->price }} </td>
+                            <td> {{ number_format(floatval($meal->price), 2, ',', '.')  }} </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -67,8 +67,8 @@
                         <tr>
                             <td> {{ $payment->id }} </td>
                             <td><span class="data" data-date="{{$payment->created_at}}"></span> </td>
-                            <td> {{ $payment->value }} </td>
-                            <td> {{ $payment->balance }} </td>
+                            <td> {{ number_format(floatval($payment->value), 2, ',', '.') }} </td>
+                            <td> {{ number_format(floatval($payment->balance), 2, ',', '.') }} </td>
                             <td> {{ $payment->last_meal_id }} </td>
                         </tr>
                     @endforeach
