@@ -58,7 +58,8 @@ class CustomersController extends Controller
         $customer = Customer::create($request->all());
         $company->customers()->save($customer);
 
-        return redirect('customer')->with('status', 'Cliente cadastrado com sucesso!');
+        $request->session()->flash('status', 'Cliente cadastrado com sucesso!');
+        return redirect('customer');
     }
 
     /**
@@ -105,8 +106,8 @@ class CustomersController extends Controller
         $customer->update($request->all());
         $company->customers()->save($customer);
 
-        return redirect()->route('customer.show', [$customer])
-                        ->with('status', 'Cliente atualizado com sucesso!');
+        $request->session()->flash('status', 'Cliente atualizado com sucesso!');
+        return redirect()->route('customer.show', [$customer]);
     }
 
     private function createOrGetCompany($company_id)
