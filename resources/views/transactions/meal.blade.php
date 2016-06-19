@@ -8,16 +8,16 @@
             <div class="modal-body">
                 {!! Form::open([ 'id' => 'meal_form']) !!}
                 <div class="row">
-                    <input id="_id" type="hidden" value="{{$customer->id}}">
+                    <input id="meal_id" type="hidden" value="{{$customer->id}}">
                     <div class="col-md-8">
                         <div class="form-group">
-                            {!! Form::label('name', 'Nome', ['for' => 'name']) !!}
+                            {!! Form::label('name', 'Nome') !!}
                             {!! Form::text('name', $customer->name, ['class' => 'form-control', 'placeholder' => 'Nome completo', 'disabled'])!!}
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            {!! Form::label('cpf', 'CPF', ['for' => 'cpf']) !!}
+                            {!! Form::label('cpf', 'CPF') !!}
                             {!! Form::text('cpf', $customer->cpf, ['class' => 'form-control', 'disabled'])!!}
                         </div>
                     </div>
@@ -25,21 +25,21 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('date', 'Data', ['for' => 'data']) !!}
+                            {!! Form::label('meal_date', 'Data') !!}
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                                 </div>
-                                {!! Form::date('date',  \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
+                                {!! Form::date('meal_date',  \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('price', 'Valor', ['for' => 'price']) !!}
+                            {!! Form::label('meal_price', 'Valor') !!}
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
-                                {!! Form::number('price', null, ['class' => 'form-control', 'autofocus', 'step' => 'any']) !!}
+                                {!! Form::number('meal_price', null, ['class' => 'form-control', 'autofocus', 'step' => 'any']) !!}
                             </div>
                         </div>
                     </div>
@@ -60,9 +60,9 @@
         $('#meal_modal').modal('hide');
 
         e.preventDefault();
-        var id     = $('#_id').val();
-        var date  = $('#date').val();
-        var price = $('#price').val();
+        var id    = $('#meal_id').val();
+        var date  = $('#meal_date').val();
+        var price = $('#meal_price').val();
 
         $.ajax({
             type: 'POST',
