@@ -42,7 +42,8 @@ class Customer extends Model
        }
 
        /**
-        * Set name attr with uppercase
+        * Set name attr with uppercase.
+        *
         * @param string $name
         */
        public function setNameAttribute($name)
@@ -51,7 +52,8 @@ class Customer extends Model
        }
 
        /**
-        * Set address1 attr with uppercase
+        * Set address1 attr with uppercase.
+        *
         * @param string $address1
         * */
        public function setAddress1Attribute($address)
@@ -60,7 +62,8 @@ class Customer extends Model
        }
 
        /**
-        * Set address2 attr with uppercase
+        * Set address2 attr with uppercase.
+        *
         * @param string $address2
         * */
        public function setAddress2Attribute($address)
@@ -69,7 +72,8 @@ class Customer extends Model
        }
 
        /**
-        * Set neighborhood attr with uppercase
+        * Set neighborhood attr with uppercase.
+        *
         * @param string $neighborhood
         * */
        public function setNeighborhoodAttribute($neighborhood)
@@ -78,7 +82,8 @@ class Customer extends Model
        }
 
        /**
-        * Set city attr with uppercase
+        * Set city attr with uppercase.
+        *
         * @param string $city
         * */
        public function setCityAttribute($city)
@@ -87,7 +92,8 @@ class Customer extends Model
        }
 
        /**
-        * Set state attr with uppercase
+        * Set state attr with uppercase.
+        *
         * @param string $state
         * */
        public function setStateAttribute($state)

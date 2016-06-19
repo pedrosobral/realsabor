@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Customer;
+use App\Http\Requests\CreateCustomerRequest;
 use App\Meal;
 use App\Payment;
-use App\Http\Requests\CreateCustomerRequest;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -142,7 +142,6 @@ class CustomersController extends Controller
 
         return view('customer.details', compact('customer', 'balance'));
     }
-
 
     public function payment(Request $request)
     {
