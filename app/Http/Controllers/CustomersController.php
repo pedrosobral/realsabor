@@ -6,6 +6,7 @@ use App\Company;
 use App\Customer;
 use App\Meal;
 use App\Payment;
+use App\Http\Requests\CreateCustomerRequest;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -51,15 +52,8 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCustomerRequest $request)
     {
-        // validation
-        $this->validate($request, [
-            'name'          => 'required',
-            'company_id'    => 'required',
-            'cpf'           => 'required|unique:customers|max:11',
-        ]);
-
         $company_id = $request->input('company_id');
         // create a new company if it not exists
         if (!is_numeric($company_id)) {
@@ -114,7 +108,7 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(CreateCustomerRequest $request, Customer $customer)
     {
         $customer->update($request->all());
 
