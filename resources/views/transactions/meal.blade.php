@@ -1,12 +1,12 @@
-<div class="modal fade" id="payment_modal" role="dialog">
+<div class="modal fade" id="meal_modal" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Novo Pagamento</h4>
+                <h4 class="modal-title">Novo Consumo</h4>
             </div>
             <div class="modal-body">
-                {!! Form::open([ 'id' => 'payment_form']) !!}
+                {!! Form::open([ 'id' => 'meal_form']) !!}
                 <div class="row">
                     <input id="_id" type="hidden" value="{{$customer->id}}">
                     <div class="col-md-8">
@@ -36,17 +36,17 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('value', 'Valor', ['for' => 'price']) !!}
+                            {!! Form::label('price', 'Valor', ['for' => 'price']) !!}
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
-                                {!! Form::number('value', null, ['class' => 'form-control', 'autofocus', 'step' => 'any']) !!}
+                                {!! Form::number('price', null, ['class' => 'form-control', 'autofocus', 'step' => 'any']) !!}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar Pagamento</button>
-                    {!! Form::submit('Salvar Pagamento', ['class' => 'btn btn-primary', 'id' => 'submit']) !!}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -55,25 +55,25 @@
 </div>
 
 <script>
-    $('#payment_form').submit(function(e) {
-        $('#payment_modal').modal('toggle');
-        $('#payment_modal').modal('hide');
+    $('#meal_form').submit(function(e) {
+        $('#meal_modal').modal('toggle');
+        $('#meal_modal').modal('hide');
 
         e.preventDefault();
-        var id    = $('#_id').val();
+        var id     = $('#_id').val();
         var date  = $('#date').val();
-        var value = $('#value').val();
+        var price = $('#price').val();
 
         $.ajax({
             type: 'POST',
-            url : "{{ route('customer.payment') }}",
+            url : "{{ route('customer.meal') }}",
             data: {
-                id: id, date: date, value: value,
+                id: id, date: date, price: price,
                 _token: '{{ Session::token() }}'
             },
-            success: function(data) {
+            success: function(data){
                 if (window.location.pathname === "/customer") {
-                    refresh(id, 'Pagamento salvo!'); // from transactions.show.blade.php
+                    refresh(id, 'Consumo cadastrado!');
                 } else {
                     location.reload();
                 }
@@ -83,4 +83,18 @@
             }
         });
     });
+
+    function refresh(id, msg) {
+        $.ajax({
+            url: 'customer/details/' + id,
+            success: function(data) {
+                $('#details').html(data);
+                toastr.success(msg);
+            },
+            error: function() {
+                toastr.erro('Ops... ocorreu algum erro!');
+                console.error('customer.index.blade.php');
+            },
+        });
+    }
 </script>
