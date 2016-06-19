@@ -20,18 +20,13 @@
 
 
 @section('footer')
-    @if (count($errors) > 0)
-    <script type="text/javascript">
-        @foreach ($errors->all() as $error)
-            toastr.error('{{$error}}');
-        @endforeach
-    </script>
-    @endif
+    @include('toasts.error')
+
     <script>
-    $('#companies_list').select2({
-        placeholder: "Selecione uma empresa",
-        allowClear: true,
-        tags: true
-    });
+        $('#companies_list').select2({
+            placeholder: "Selecione uma empresa",
+            allowClear: true,
+            tags: true
+        });
     </script>
 @endsection

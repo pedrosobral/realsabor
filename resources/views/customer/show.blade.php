@@ -89,15 +89,17 @@
 @stop
 
 @section('footer')
-<script type="text/javascript">
-$(function() {
-    var dates = $('.data');
-    dates.each(function(date) {
-        this.innerHTML = moment(new Date(this.dataset.date)).calendar();
-    });
-});
-</script>
+    @include('toasts.success')
 
-@include('transactions.payment')
-@include('transactions.meal')
+    <script>
+        $(function() {
+            var dates = $('.data');
+            dates.each(function(date) {
+                this.innerHTML = moment(new Date(this.dataset.date)).calendar();
+            });
+        });
+    </script>
+
+    @include('transactions.payment')
+    @include('transactions.meal')
 @stop

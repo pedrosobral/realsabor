@@ -43,11 +43,8 @@
 @endsection
 
 @section('footer')
-    @if(session('status'))
-        <script type="text/javascript">
-            toastr.success('{{session('status')}}');
-        </script>
-    @endif
+    @include('toasts.success');
+
     <script>
     $('.customer').click(function(){
         var id = $(this).attr('value');

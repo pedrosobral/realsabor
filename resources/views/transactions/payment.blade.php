@@ -75,6 +75,7 @@
                 if (window.location.pathname === "/customer") {
                     refresh(id, 'Consumo cadastrado!');
                 } else {
+                    toastr.success('buceta');
                     location.reload();
                 }
             },

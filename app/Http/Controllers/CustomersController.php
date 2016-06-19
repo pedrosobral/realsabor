@@ -112,7 +112,8 @@ class CustomersController extends Controller
     {
         $customer->update($request->all());
 
-        return redirect('customer');
+        return redirect()->route('customer.show', [$customer])
+                        ->with('status', 'Cliente atualizado com sucesso!');
     }
 
     /**
