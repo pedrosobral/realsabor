@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-
 class CreateCustomerRequest extends Request
 {
     /**
@@ -20,13 +18,13 @@ class CreateCustomerRequest extends Request
      * Get the validation rules that apply to the request.
      * ref: laracasts.com
      * 		/discuss/channels/requests
-     *   	/laravel-5-validation-request-how-to-handle-validation-on-update
+     *   	/laravel-5-validation-request-how-to-handle-validation-on-update.
+     *
      * @return array
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             case 'GET':
             case 'DELETE':
             {
@@ -46,7 +44,7 @@ class CreateCustomerRequest extends Request
                 return [
                     'name'          => 'required',
                     'company_id'    => 'required',
-                    'cpf'           => 'required|max:11|unique:customers,cpf,'.$this->customer->id
+                    'cpf'           => 'required|max:11|unique:customers,cpf,'.$this->customer->id,
                 ];
             }
             default:break;
