@@ -12,6 +12,8 @@
         <button data-toggle="modal" data-target="#meal_modal" class="btn btn-warning pull-right">
             <span class="glyphicon glyphicon-usd"></span> Consumo
         </button>
+        <a role="button" href="{{route('customer.edit', $customer->id)}}" class="btn btn-info pull-right">Editar</a>
+
     </div>
 </div>
 
