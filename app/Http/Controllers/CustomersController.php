@@ -54,16 +54,7 @@ class CustomersController extends Controller
      */
     public function store(CreateCustomerRequest $request)
     {
-        $company_id = $request->input('company_id');
-        // create a new company if it not exists
-        if (!is_numeric($company_id)) {
-            Company::create(['name' => $company_id]);
-            // get the lastest company that we just created
-            $company = Company::findOrFail(Company::all()->last()->id);
-        } else {
-            $company = Company::findOrFail($company_id);
-        }
-
+        $company = $this->createOrGetCompany($request->input('company_id'));
         $customer = Customer::create($request->all());
         $company->customers()->save($customer);
 
@@ -110,10 +101,25 @@ class CustomersController extends Controller
      */
     public function update(CreateCustomerRequest $request, Customer $customer)
     {
+        $company = $this->createOrGetCompany($request->input('company_id'));
         $customer->update($request->all());
+        $company->customers()->save($customer);
 
         return redirect()->route('customer.show', [$customer])
                         ->with('status', 'Cliente atualizado com sucesso!');
+    }
+
+    private function createOrGetCompany($company_id)
+    {
+        // create a new company if it not exists
+        if (!is_numeric($company_id)) {
+            Company::create(['name' => $company_id]);
+            // get the lastest company that we just created
+            $company = Company::findOrFail(Company::all()->last()->id);
+        } else {
+            $company = Company::findOrFail($company_id);
+        }
+        return $company;
     }
 
     /**
