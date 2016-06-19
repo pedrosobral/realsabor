@@ -101,7 +101,9 @@ class CustomersController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        $companies = Company::lists('name', 'id');
+
+        return view('customer.edit', compact('customer', 'companies'));
     }
 
     /**
@@ -114,7 +116,9 @@ class CustomersController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $customer->update($request->all());
+
+        return redirect('customer');
     }
 
     /**
