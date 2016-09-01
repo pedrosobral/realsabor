@@ -3,19 +3,28 @@
 @section('content')
     <div class="container">
 
-<div class="page-header">
-    <div class="btn-toolbar">
-        <span class="headline"> {{$customer->name}}</span> <small class="label label-primary">{{$customer->company->name}}</small>
-        <button data-toggle="modal" data-target="#payment_modal" class="btn btn-success pull-right">
-            <span class="glyphicon glyphicon-cutlery"></span> Pagamento
-        </button>
-        <button data-toggle="modal" data-target="#meal_modal" class="btn btn-warning pull-right">
-            <span class="glyphicon glyphicon-usd"></span> Consumo
-        </button>
-        <a role="button" href="{{route('customer.edit', $customer->id)}}" class="btn btn-info pull-right">Editar</a>
+        <div class="page-header">
+            <div class="btn-toolbar">
+                <div class="col-md-6">
+                    <span class="headline"> {{$customer->name}}</span>
+                    <small class="label label-primary">{{$customer->company->name}}</small>
+                </div>
+                <div class="col-md-offset-1 col-md-5">
 
-    </div>
-</div>
+                    <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+                        <a href="{{route('customer.edit', $customer->id)}}" class="btn btn-default" role="button">
+                            <span class="glyphicon glyphicon-edit"></span> Editar
+                        </a>
+                        <a class="btn btn-default" data-toggle="modal" data-target="#payment_modal" role="button">
+                            <span class="glyphicon glyphicon-cutlery"></span> Pagamento
+                        </a>
+                        <a data-toggle="modal" data-target="#meal_modal" class="btn btn-default" role="button">
+                            <span class="glyphicon glyphicon-usd"></span> Consumo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <div class="row">
     <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
