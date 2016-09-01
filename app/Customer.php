@@ -101,9 +101,9 @@ class Customer extends Model
            $this->attributes['state'] = strtoupper($state);
        }
 
-       public function balance()
-       {
-             // get last meal id paid
+    public function balance()
+    {
+        // get last meal id paid
             $lastMealIdPaid = $this->payments->last();
 
             // if it's first time paying
@@ -120,5 +120,5 @@ class Customer extends Model
 
             // plus the lastest balance
             return $balance += $lastBalance;
-        }
+    }
 }
