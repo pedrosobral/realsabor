@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Company::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->randomElement($array =  ['AMERICANAS', 'C&A',
+        'name' => $faker->randomElement($array = ['AMERICANAS', 'C&A',
             'CENTAURO', 'CLARO', 'EXPRESSO CIDADAO', 'MARISA', 'BANCO DO BRASIL',
             'NAGEM', 'O BOTICARIO', 'PASTELANDIA', 'RABELO', 'RIACHUELO',
             'RICARDO ELETRO', ]),

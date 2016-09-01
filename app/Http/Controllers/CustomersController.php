@@ -59,6 +59,7 @@ class CustomersController extends Controller
         $company->customers()->save($customer);
 
         $request->session()->flash('status', 'Cliente cadastrado com sucesso!');
+
         return redirect('customer');
     }
 
@@ -107,6 +108,7 @@ class CustomersController extends Controller
         $company->customers()->save($customer);
 
         $request->session()->flash('status', 'Cliente atualizado com sucesso!');
+
         return redirect()->route('customer.show', [$customer]);
     }
 
@@ -120,6 +122,7 @@ class CustomersController extends Controller
         } else {
             $company = Company::findOrFail($company_id);
         }
+
         return $company;
     }
 
