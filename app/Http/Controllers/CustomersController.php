@@ -187,5 +187,4 @@ class CustomersController extends Controller
 
         return $request->id;
     }
-
 }
