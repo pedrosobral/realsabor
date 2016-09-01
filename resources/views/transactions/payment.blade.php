@@ -45,8 +45,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar Pagamento</button>
-                    {!! Form::submit('Salvar Pagamento', ['class' => 'btn btn-primary']) !!}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
                 </div>
                 {!! Form::close() !!}
             </div>
