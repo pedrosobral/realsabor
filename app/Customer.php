@@ -100,4 +100,25 @@ class Customer extends Model
        {
            $this->attributes['state'] = strtoupper($state);
        }
+
+       public function balance()
+       {
+             // get last meal id paid
+            $lastMealIdPaid = $this->payments->last();
+
+            // if it's first time paying
+            if (!$lastMealIdPaid) {
+                $lastMealIdPaid = 0;
+                $lastBalance = 0;
+            } else {
+                $lastMealIdPaid = $this->payments->last()->last_meal_id;
+                $lastBalance = $this->payments->last()->balance;
+            }
+
+            // sum all meals price
+            $balance = floatval($this->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
+
+            // plus the lastest balance
+            return $balance += $lastBalance;
+        }
 }
