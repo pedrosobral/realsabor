@@ -30,4 +30,16 @@ class Company extends Model
      {
          $this->attributes['name'] = strtoupper($name);
      }
+
+     public function getTotalCustomersBalance()
+     {
+         $customers = $this->customers;
+
+         $sum = 0;
+         foreach ($customers as $customer) {
+            $sum += $customer->balance();
+         }
+
+         return $sum;
+     }
 }
