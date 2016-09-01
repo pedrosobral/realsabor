@@ -74,5 +74,6 @@
 </div>
 
 <div class="form-group">
+    <a href="{{URL::previous()}}" role="button" class="btn btn-default">Cancelar</a>
     {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
 </div>
