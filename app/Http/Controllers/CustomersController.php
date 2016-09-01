@@ -71,7 +71,7 @@ class CustomersController extends Controller
      */
     public function show(Customer $customer)
     {
-        $balance = $this->getBalance($customer);
+        $balance = $customer->balance();
 
         $balance = number_format($balance, 2, ',', '.');
 
@@ -144,7 +144,7 @@ class CustomersController extends Controller
      */
     public function details(Customer $customer)
     {
-        $balance = $this->getBalance($customer);
+        $balance = $customer->balance();
 
         $balance = number_format($balance, 2, ',', '.');
 
@@ -156,7 +156,7 @@ class CustomersController extends Controller
         // get customer
         $customer = Customer::findOrFail($request->id);
 
-        $sumDebit = $this->getBalance($customer);
+        $sumDebit = $customer->balance();
 
         // calculate new balance
         $balance = $sumDebit - $request->value;
@@ -185,24 +185,4 @@ class CustomersController extends Controller
         return $request->id;
     }
 
-    private function getBalance(Customer $customer)
-    {
-        // get last meal id paid
-        $lastMealIdPaid = $customer->payments->last();
-
-        // if it's first time paying
-        if (!$lastMealIdPaid) {
-            $lastMealIdPaid = 0;
-            $lastBalance = 0;
-        } else {
-            $lastMealIdPaid = $customer->payments->last()->last_meal_id;
-            $lastBalance = $customer->payments->last()->balance;
-        }
-
-        // sum all meals price
-        $balance = floatval($customer->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
-
-        // plus the lastest balance
-        return $balance += $lastBalance;
-    }
 }
