@@ -12,10 +12,13 @@
                         </a>
                     </h3>
                 </div>
-                <table id="customers" class="table table-striped"  cellspacing="0" width="100%">
+                <table class="datatables table table-striped">
                     <thead>
-                        <th> Nome </th>
-                        <th> CPF </th>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Empresa</th>
+                            <th>CPF</th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach($customers as $customer)
@@ -25,6 +28,7 @@
                                         {{ $customer->name }}
                                     </a>
                                 </td>
+                                <td> {{ $customer->company->name }} </td>
                                 <td> {{ $customer->cpf }} </td>
                             </tr>
                         @endforeach
@@ -32,21 +36,22 @@
                 </table>
 
             </div>
-            <div class="col-md-7 details">
-
+            <div id="details" class="col-md-7">
             </div>
         </div>
     </div>
 @endsection
 
 @section('footer')
+    @include('toasts.success');
+
     <script>
     $('.customer').click(function(){
         var id = $(this).attr('value');
         $.ajax({
-            url: 'customer/' + id,
+            url: 'customer/details/' + id,
             success: function(data){
-                $('.details').html(data);
+                $('#details').html(data);
             },
             error: function(){
                 console.error('customer.index.blade.php');

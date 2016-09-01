@@ -23,6 +23,7 @@
     "bootstrap": "^3.3.6",
     "moment": "^2.13.0",
     "datatables.net": "^1.10.12",
-    "datatables.net-bs": "^1.10.12"
+    "datatables.net-bs": "^1.10.12",
+    "toastr": "^2.1.2"
   }
 }

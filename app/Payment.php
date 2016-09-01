@@ -24,24 +24,14 @@ class Payment extends Model
          return $this->belongsTo('App\Customer');
      }
 
-     /**
+    /**
      * Get the value formatted.
      *
-     * @param  float $value
+     * @param float $value
+     *
      * @return string
      * */
     public function getValueAttribute($value)
-    {
-        return number_format($value, 2, ',', '.');
-    }
-
-     /**
-     * Get the value formatted.
-     *
-     * @param  float $value
-     * @return string
-     * */
-    public function getBalanceAttribute($value)
     {
         return number_format($value, 2, ',', '.');
     }

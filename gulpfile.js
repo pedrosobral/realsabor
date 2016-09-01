@@ -7,6 +7,7 @@ var p = {
     'select2': './node_modules/select2/dist/',
     'datatables': './www/lib/dataTables.net/',
     'datatables_bs': './www/lib/datatables.net-bs/',
+    'toastr': './www/lib/toastr/'
 };
 
 /*
@@ -38,6 +39,7 @@ elixir(function(mix) {
         p.datatables + 'js/jquery.dataTables.js',
         p.datatables_bs + 'js/dataTables.bootstrap.js',
         p.select2 + 'js/select2.full.js',
+        p.toastr + 'toastr.js'
     ], 'public/js/vendor.js');
 
     mix.scripts([

@@ -22,15 +22,4 @@ class Meal extends Model
      {
          return $this->belongsTo('App\Customer');
      }
-
-     /**
-     * Get the price formatted.
-     *
-     * @param  float $value
-     * @return string
-     * */
-    public function getPriceAttribute($value)
-    {
-        return number_format($value, 2, ',', '.');
-    }
 }

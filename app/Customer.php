@@ -40,4 +40,64 @@ class Customer extends Model
        {
            return $this->hasMany('App\Payment');
        }
+
+       /**
+        * Set name attr with uppercase.
+        *
+        * @param string $name
+        */
+       public function setNameAttribute($name)
+       {
+           $this->attributes['name'] = strtoupper($name);
+       }
+
+       /**
+        * Set address1 attr with uppercase.
+        *
+        * @param string $address1
+        * */
+       public function setAddress1Attribute($address)
+       {
+           $this->attributes['address1'] = strtoupper($address);
+       }
+
+       /**
+        * Set address2 attr with uppercase.
+        *
+        * @param string $address2
+        * */
+       public function setAddress2Attribute($address)
+       {
+           $this->attributes['address2'] = strtoupper($address);
+       }
+
+       /**
+        * Set neighborhood attr with uppercase.
+        *
+        * @param string $neighborhood
+        * */
+       public function setNeighborhoodAttribute($neighborhood)
+       {
+           $this->attributes['neighborhood'] = strtoupper($neighborhood);
+       }
+
+       /**
+        * Set city attr with uppercase.
+        *
+        * @param string $city
+        * */
+       public function setCityAttribute($city)
+       {
+           $this->attributes['city'] = strtoupper($city);
+       }
+
+       /**
+        * Set state attr with uppercase.
+        *
+        * @param string $state
+        * */
+       public function setStateAttribute($state)
+       {
+           $this->attributes['state'] = strtoupper($state);
+       }
 }

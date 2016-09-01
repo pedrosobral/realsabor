@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 
-class PaymentsController extends Controller
+class MealsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PaymentsController extends Controller
      */
     public function index(Customer $customer)
     {
-        return view('payments.index', compact('customer'));
+        return view('meals.index', compact('customer'));
     }
 
     /**
@@ -48,6 +48,7 @@ class PaymentsController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**

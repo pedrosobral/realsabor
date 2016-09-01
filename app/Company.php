@@ -20,4 +20,14 @@ class Company extends Model
      {
          return $this->hasMany('App\Customer');
      }
+
+     /**
+      * Set name attr with uppercase.
+      *
+      * @param string $name
+      */
+     public function setNameAttribute($name)
+     {
+         $this->attributes['name'] = strtoupper($name);
+     }
 }

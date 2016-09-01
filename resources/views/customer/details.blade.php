@@ -1,8 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
-    <div class="container">
-
 <div class="page-header">
     <div class="btn-toolbar">
         <span class="headline"> {{$customer->name}}</span> <small class="label label-primary">{{$customer->company->name}}</small>
@@ -12,8 +7,7 @@
         <button data-toggle="modal" data-target="#meal_modal" class="btn btn-warning pull-right">
             <span class="glyphicon glyphicon-usd"></span> Consumo
         </button>
-        <a role="button" href="{{route('customer.edit', $customer->id)}}" class="btn btn-info pull-right">Editar</a>
-
+        <a role="button" href="{{route('customer.show', $customer->id)}}" class="btn btn-info pull-right"> Ver Detalhes</a>
     </div>
 </div>
 
@@ -85,21 +79,15 @@
 
     </div>
 </div>
-</div>
-@stop
 
-@section('footer')
-    @include('toasts.success')
+<script type="text/javascript">
+$(function() {
+    var dates = $('.data');
+    dates.each(function(date) {
+        this.innerHTML = moment(new Date(this.dataset.date)).calendar();
+    });
+});
+</script>
 
-    <script>
-        $(function() {
-            var dates = $('.data');
-            dates.each(function(date) {
-                this.innerHTML = moment(new Date(this.dataset.date)).calendar();
-            });
-        });
-    </script>
-
-    @include('transactions.payment')
-    @include('transactions.meal')
-@stop
+@include('transactions.payment')
+@include('transactions.meal')

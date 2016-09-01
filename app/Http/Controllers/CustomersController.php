@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Customer;
+use App\Http\Requests\CreateCustomerRequest;
 use App\Meal;
 use App\Payment;
 use Illuminate\Http\Request;
@@ -51,20 +52,13 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCustomerRequest $request)
     {
-        $company_id = $request->input('company_id');
-        // create a new company if it not exists
-        if (!is_numeric($company_id)) {
-            Company::create(['name' => $company_id]);
-            // get the lastest company that we just created
-            $company = Company::findOrFail(Company::all()->last()->id);
-        } else {
-            $company = Company::findOrFail($company_id);
-        }
-
+        $company = $this->createOrGetCompany($request->input('company_id'));
         $customer = Customer::create($request->all());
         $company->customers()->save($customer);
+
+        $request->session()->flash('status', 'Cliente cadastrado com sucesso!');
 
         return redirect('customer');
     }
@@ -78,25 +72,10 @@ class CustomersController extends Controller
      */
     public function show(Customer $customer)
     {
-        $lastBalance = 0;
+        $balance = $this->getBalance($customer);
 
-        // get last meal id paid
-        $lastMealIdPaid = $customer->payments->last();
-
-        // if it's first time paying
-        if (!$lastMealIdPaid) {
-            $lastMealIdPaid = 0;
-        } else {
-            $lastMealIdPaid = $customer->payments->last()->last_meal_id;
-            $lastBalance = $customer->payments->last()->balance;
-        }
-
-        // sum all meals price
-        $balance = floatval($customer->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
-
-        // plus the lastest balance
-        $balance += $lastBalance;
         $balance = number_format($balance, 2, ',', '.');
+
         return view('customer.show', compact('customer', 'balance'));
     }
 
@@ -109,7 +88,9 @@ class CustomersController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        $companies = Company::lists('name', 'id');
+
+        return view('customer.edit', compact('customer', 'companies'));
     }
 
     /**
@@ -120,9 +101,29 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(CreateCustomerRequest $request, Customer $customer)
     {
-        //
+        $company = $this->createOrGetCompany($request->input('company_id'));
+        $customer->update($request->all());
+        $company->customers()->save($customer);
+
+        $request->session()->flash('status', 'Cliente atualizado com sucesso!');
+
+        return redirect()->route('customer.show', [$customer]);
+    }
+
+    private function createOrGetCompany($company_id)
+    {
+        // create a new company if it not exists
+        if (!is_numeric($company_id)) {
+            Company::create(['name' => $company_id]);
+            // get the lastest company that we just created
+            $company = Company::findOrFail(Company::all()->last()->id);
+        } else {
+            $company = Company::findOrFail($company_id);
+        }
+
+        return $company;
     }
 
     /**
@@ -137,30 +138,30 @@ class CustomersController extends Controller
         //
     }
 
+    /**
+     * Display the specified resource details.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function details(Customer $customer)
+    {
+        $balance = $this->getBalance($customer);
+
+        $balance = number_format($balance, 2, ',', '.');
+
+        return view('customer.details', compact('customer', 'balance'));
+    }
+
     public function payment(Request $request)
     {
-        $lastBalance = 0;
         // get customer
         $customer = Customer::findOrFail($request->id);
 
-        // get last meal id paid
-        $lastMealIdPaid = $customer->payments->last();
+        $sumDebit = $this->getBalance($customer);
 
-        // if it's first time paying
-        if (!$lastMealIdPaid) {
-            $lastMealIdPaid = 0;
-        } else {
-            $lastMealIdPaid = $customer->payments->last()->last_meal_id;
-            $lastBalance = $customer->payments->last()->balance;
-        }
-
-        // sum all meals price
-        $sumDebit = floatval($customer->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
-
-        // plus the lastest balance
-        $sumDebit += $lastBalance;
-
-        // calculate balance
+        // calculate new balance
         $balance = $sumDebit - $request->value;
 
         // get last meal
@@ -168,9 +169,9 @@ class CustomersController extends Controller
 
         // create payment
         $payment = new Payment();
-        $payment->value         = $request->value;
-        $payment->balance       = $balance;
-        $payment->last_meal_id  = $last_meal_id;
+        $payment->value = $request->value;
+        $payment->balance = $balance;
+        $payment->last_meal_id = $last_meal_id;
         // save it
         $customer->payments()->save($payment);
     }
@@ -185,5 +186,26 @@ class CustomersController extends Controller
         $customer->meals()->save($meal);
 
         return $request->id;
+    }
+
+    private function getBalance(Customer $customer)
+    {
+        // get last meal id paid
+        $lastMealIdPaid = $customer->payments->last();
+
+        // if it's first time paying
+        if (!$lastMealIdPaid) {
+            $lastMealIdPaid = 0;
+            $lastBalance = 0;
+        } else {
+            $lastMealIdPaid = $customer->payments->last()->last_meal_id;
+            $lastBalance = $customer->payments->last()->balance;
+        }
+
+        // sum all meals price
+        $balance = floatval($customer->meals()->where('id', '>', $lastMealIdPaid)->sum('price'));
+
+        // plus the lastest balance
+        return $balance += $lastBalance;
     }
 }

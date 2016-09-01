@@ -7,7 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Novo Cliente</div>
                 <div class="panel-body">
-                    {!! Form::open(['route' => 'customer.store']) !!}
+                    {!! Form::model($customer, ['method' => 'PATCH',
+                            'route' => ['customer.update', $customer->id]]) !!}
                     @include('customer._form')
                     {!! Form::close() !!}
                 </div>
@@ -19,7 +20,7 @@
 
 
 @section('footer')
-    @include('toasts.error');
+    @include('toasts.error')
 
     <script>
         $('#companies_list').select2({

@@ -5,9 +5,11 @@
     <div class="panel-body">
         <h1>Funcionários</h1>
         @foreach($company->customers as $customer)
-            <a href="javascript:void(0);" value="{{$customer->id}}" class="company">
-                {{ $customer->name }}
-            </a><br>
+            <p>
+                <a href="javascript:void(0);" value="{{$customer->id}}" class="company">
+                    {{ $customer->name }}
+                </a>
+            </p>
         @endforeach
     </div>
 </div>
