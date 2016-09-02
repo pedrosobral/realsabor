@@ -25,6 +25,8 @@ Route::get('/reports', 'ReportsController@index');
 Route::resource('companies', 'CompaniesController',
     ['only' => ['index', 'store', 'show', 'edit', 'update', 'destroy']]);
 
+Route::get('customer/meals', 'CustomersMealsController@index')->name('customer.meals');
+
 Route::resource('customer', 'CustomersController');
 Route::get('customer/details/{customer}', 'CustomersController@details')->name('customer.details');
 
