@@ -17,19 +17,25 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')
+    ->name('home');
+    
 Route::get('/reports', 'ReportsController@index');
 
 Route::resource('companies', 'CompaniesController',
     ['only' => ['index', 'store', 'show', 'edit', 'update', 'destroy']]);
 
-Route::get('customer/meals', 'CustomersMealsController@index')->name('customer.meals');
+Route::get('customer/meals', 'CustomersMealsController@index')
+    ->name('customer.meals');
 
 Route::resource('customer', 'CustomersController');
-Route::get('customer/details/{customer}', 'CustomersController@details')->name('customer.details');
+Route::get('customer/details/{customer}', 'CustomersController@details')
+    ->name('customer.details');
 
 Route::resource('customer.payments', 'PaymentsController');
 Route::resource('customer.meals', 'MealsController');
 
-Route::post('customer/payment', 'CustomersController@payment')->name('customer.payment');
-Route::post('customer/meal', 'CustomersController@meal')->name('customer.meal');
+Route::post('customer/payment', 'CustomersController@payment')
+    ->name('customer.payment');
+Route::post('customer/meal', 'CustomersController@meal')
+    ->name('customer.meal');
