@@ -7,7 +7,7 @@
             <div class="col-md-5">
                 <div class="page-header">
                     <h3>Clientes
-                        <a href="{!! route('customer.create') !!}" class="btn btn-primary pull-right" role="button">
+                        <a href="{!! route('customer.create') !!}" class="btn btn-default pull-right" role="button">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Novo Cliente
                         </a>
                     </h3>
