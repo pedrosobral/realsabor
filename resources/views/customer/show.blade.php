@@ -16,10 +16,10 @@
                             <span class="glyphicon glyphicon-edit"></span> Editar
                         </a>
                         <a class="btn btn-default" data-toggle="modal" data-target="#payment_modal" role="button">
-                            <span class="glyphicon glyphicon-cutlery"></span> Pagamento
+                            <span class="glyphicon glyphicon-usd"></span> Pagamento
                         </a>
                         <a data-toggle="modal" data-target="#meal_modal" class="btn btn-default" role="button">
-                            <span class="glyphicon glyphicon-usd"></span> Consumo
+                            <span class="glyphicon glyphicon-cutlery"></span> Consumo
                         </a>
                     </div>
                 </div>
