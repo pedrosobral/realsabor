@@ -3,7 +3,6 @@
 
         <div class="col-md-5">
             <span class="headline"> {{$customer->name}}</span>
-            <small class="label label-primary">{{$customer->company->name}}</small>
         </div>
 
         <div class="col-md-7">

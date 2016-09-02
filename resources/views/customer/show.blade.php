@@ -7,7 +7,6 @@
             <div class="btn-toolbar">
                 <div class="col-md-6">
                     <span class="headline"> {{$customer->name}}</span>
-                    <small class="label label-primary">{{$customer->company->name}}</small>
                 </div>
                 <div class="col-md-offset-1 col-md-5">
 
