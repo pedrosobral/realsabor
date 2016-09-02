@@ -60,7 +60,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="glyphicon glyphicon-log-out"></i> Sair</a></li>
                             </ul>
                         </li>
                     @endif
