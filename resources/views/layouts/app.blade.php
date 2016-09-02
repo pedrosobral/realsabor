@@ -35,7 +35,13 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-                    <li><a href="{{ url('/customer') }}">Clientes</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="{{ url('/customer') }}">Clientes <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{url('/customer')}}">Todos</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-cutlery"></span> Refeições</a></li>
+                        </ul>
+                    </li>
                     <li><a href="{{ url('/companies') }}">Empresas</a></li>
                     <li><a href="{{ url('/searchs') }}">Consultas</a></li>
                     <li><a href="{{ url('/reports') }}">Relatórios</a></li>
