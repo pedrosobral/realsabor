@@ -18,6 +18,8 @@
 - [Select2](https://github.com/select2/select2) licensed under the [MIT license](http://opensource.org/licenses/MIT).
 - [Jquery](https://jquery.org/license/) licensed under the [MIT license](http://opensource.org/licenses/MIT).
 - [Bootstrap3](http://getbootstrap.com/) licensed under the [MIT license](http://opensource.org/licenses/MIT).
+- [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker) licensed under the
+    [Apache 2 license](https://github.com/eternicode/bootstrap-datepicker/blob/master/LICENSE).
 - [Toastr](https://github.com/CodeSeven/toastr) licensed under the [MIT license](http://opensource.org/licenses/MIT).
 - [Moment.js](http://momentjs.com/) licensed under the [MIT license](http://opensource.org/licenses/MIT).
 - [DataTables](https://datatables.net/) licensed under the [MIT license](http://opensource.org/licenses/MIT).
