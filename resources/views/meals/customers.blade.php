@@ -8,8 +8,9 @@
             <div class="input-group date col-md-2 col-xs-4 pull-right">
                 <input id="mes_referencia" type="text" class="form-control"
                     placeholder="Escolher mês">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-th"></i></span>
+                    <span class="input-group-btn">
+                       <button class="btn btn-default" type="button">Filtrar</button>
+                     </span>
             </div>
         </div>
     </div>
