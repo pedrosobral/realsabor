@@ -4,7 +4,13 @@
 <div class="container">
     <div class="page-header">
         <div class="btn-toolbar">
-            <span class="headline">Refeições</span>
+            <span class="headline col-md-5">Refeições</span>
+            <div class="input-group date col-md-2 col-xs-4 pull-right">
+                <input id="mes_referencia" type="text" class="form-control"
+                    placeholder="Escolher mês">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-th"></i></span>
+            </div>
         </div>
     </div>
     <div class="col-md-12">
@@ -37,3 +43,14 @@
     </div>
 </div>
 @stop
+
+@section('footer')
+    <script type="text/javascript">
+        $('#mes_referencia').datepicker({
+            format: "mm/yyyy",
+            minViewMode: 1,
+            autoclose: true,
+            language: "pt-BR"
+        });
+    </script>
+@endsection
