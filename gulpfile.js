@@ -7,7 +7,8 @@ var p = {
     'select2': './node_modules/select2/dist/',
     'datatables': './www/lib/dataTables.net/',
     'datatables_bs': './www/lib/datatables.net-bs/',
-    'toastr': './www/lib/toastr/'
+    'toastr': './www/lib/toastr/',
+    'datepicker': './www/lib/datepicker/',
 };
 
 /*
@@ -29,6 +30,7 @@ elixir(function(mix) {
     mix.styles([
         p.select2 + 'css/select2.css',
         p.datatables_bs + 'css/dataTables.bootstrap.css',
+        p.datepicker + 'bootstrap-datepicker3.css',
         'app.css'
     ]);
 
@@ -39,7 +41,9 @@ elixir(function(mix) {
         p.datatables + 'js/jquery.dataTables.js',
         p.datatables_bs + 'js/dataTables.bootstrap.js',
         p.select2 + 'js/select2.full.js',
-        p.toastr + 'toastr.js'
+        p.toastr + 'toastr.js',
+        p.datepicker + 'bootstrap-datepicker.js',
+        p.datepicker + 'bootstrap-datepicker.pt-BR.min.js',
     ], 'public/js/vendor.js');
 
     mix.scripts([
